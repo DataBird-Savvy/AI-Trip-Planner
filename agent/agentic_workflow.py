@@ -1,19 +1,17 @@
 from os import system
 
-from  utils.model_loaders import load_model
+from  utils.model_loaders import ModelLoader
 from prompt_library.prompt import SYSTEM_PROMPT
 from langgraph.graph import StateGraph, MessagesState, END, START
 from langgraph.prebuilt import ToolNode, tools_condition
 
 
 class Graphbuilder:
-    def __init__(self):
-        self.tools = {
-            # "weather": WeatherTool(),
-            # "flight": FlightTool(),
-            # "hotel": HotelTool(),
-            # "restaurant": RestaurantTool(),
-        }
+    def __init__(self, model_provider: str = "groq"):
+        self.model_loader = ModelLoader(model_provider=model_provider)
+        self.llm = self.model_loader.load_llm()
+        self.tools = []
+        
         self.system_prompt = SYSTEM_PROMPT
 
 
@@ -21,7 +19,7 @@ class Graphbuilder:
         """ main agent function that will be called by the graph"""
         user_question=state["messages"]
         input_question=[self.system_prompt]+user_question
-        response=self.llm_with_tools.invoke(input_question)
+        response=self.llm.invoke(input_question)
 
         return {"messages": response}
 
