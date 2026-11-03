@@ -3,7 +3,7 @@ from typing import Optional, Any, dict,List
 from langchain.tools import tool
 from dotenv import load_dotenv
 from utils.weather_info import WeatherForecastTool
-
+import json
 class WeatherInfoTool:
     def __init__(self):
         load_dotenv()
