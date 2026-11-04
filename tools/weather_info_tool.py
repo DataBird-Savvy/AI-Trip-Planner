@@ -58,4 +58,6 @@ class WeatherInfoTool:
 
                 
             return forecast_str
+
+        return [get_current_weather, get_weather_forecast]
             

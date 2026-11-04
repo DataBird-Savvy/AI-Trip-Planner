@@ -10,8 +10,8 @@ import requests
 
 class CurrencyConverter:
 
-    def __init__(self):
-        self.api_key = os.environ.get("EXCHANGE_RATE_API_KEY")
+    def __init__(self, api_key: str):
+        self.api_key = api_key
         self.base_url = "https://api.exchangerate.host/convert"
 
     def convert_currency(
