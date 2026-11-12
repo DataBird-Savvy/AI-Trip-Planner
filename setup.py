@@ -10,7 +10,7 @@ def get_requirements()->List[str]:
     try:
         # Open and read the requirements.txt file
         with open('requirements.txt', 'r') as file:
-            # Read lines from the file
+            # Read lines from the fileA
             lines = file.readlines()
             # Process each line
             for line in lines:

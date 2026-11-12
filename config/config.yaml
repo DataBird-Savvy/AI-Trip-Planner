@@ -1,12 +1,10 @@
 
 llm:
-  groq:
-
-    
-    provider:"groq",
-    model_name: "deepseek-r1-distil-llama-70b",
+  groq:    
+    provider: "groq"
+    model_name: "qwen/qwen3.8-27b"
 
 
   openai:
-    provider: "openai",
-    model_name: "gpt-4o-mini",
+    provider: "openai"
+    model_name: "gpt-4o-mini"
