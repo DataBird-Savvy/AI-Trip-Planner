@@ -13,10 +13,20 @@ class PlaceSearchTool:
         self.place_search_tool_list = self._setup_tools()
 
     def _setup_tools(self) -> List:
-        """Setup all tools for the place search tool"""
+        """Setup all tools for the place search tool
+        Args:
+            place (str): The place to search for
+        Returns:
+            List: A list of tools for place search
+        """
         @tool
         def search_attractions(place:str) -> str:
-            """Search attractions of a place"""
+            """Search attractions of a place
+            Args:
+                place (str): The place to search for
+            Returns:
+                str: A string containing the attractions of the place
+            """
             try:
                 attraction_result = self.osm_search.search_attractions(place)
                 if attraction_result:
@@ -31,7 +41,14 @@ class PlaceSearchTool:
         
         @tool
         def search_restaurants(place:str) -> str:
-            """Search restaurants of a place"""
+            """Search restaurants of a place
+
+            Args:
+                place (str): The place to search for
+
+            Returns:
+                str: A string containing the restaurants of the place
+            """
             try:
                 restaurants_result = self.osm_search.search_restaurants(place)
                 if restaurants_result:
@@ -46,7 +63,14 @@ class PlaceSearchTool:
         
         @tool
         def search_activities(place:str) -> str:
-            """Search activities of a place"""
+            """Search activities of a place
+
+            Args:
+                place (str): The place to search for
+
+            Returns:
+                str: A string containing the activities of the place
+            """
             try:
                 activities_result = self.osm_search.search_activities(place)
                 if activities_result:
@@ -61,7 +85,14 @@ class PlaceSearchTool:
         
         @tool
         def search_transportation(place:str) -> str:
-            """Search transportation of a place"""
+            """Search transportation of a place
+
+            Args:
+                place (str): The place to search for
+
+            Returns:
+                str: A string containing the transportation options of the place
+            """
             try:
                 transportation_result = self.osm_search.search_transportation(place)
                 if transportation_result:

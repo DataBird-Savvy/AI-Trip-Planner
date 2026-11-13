@@ -13,6 +13,7 @@ class ArithamaticOperationTool:
         @tool
         def multiply(self, a: float, b: float) -> float:
             """Multiply two numbers"""
+            
             try:
                 return a * b
             except Exception as e:
