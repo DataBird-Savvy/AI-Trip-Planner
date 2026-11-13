@@ -14,9 +14,18 @@ class CalculatorTool:
 
     def _setup_tools(self) -> List:
         """Setup all tools for the calculator tool"""
+
         @tool
         def estimate_total_hotel_cost(price_per_night:float, total_days:float) -> float:
-            """Calculate total hotel cost"""
+            """Calculate total hotel cost
+
+            Args:
+                price_per_night (float): The price per night
+                total_days (float): The total number of days
+
+            Returns:
+                float: The total hotel cost
+            """
             try:
                 result = self.calculator.multiply(price_per_night, total_days)
                 logger.info("Total hotel cost calculated: {}".format(result))
@@ -27,7 +36,14 @@ class CalculatorTool:
 
         @tool
         def calculate_total_expense(*costs: float) -> float:
-            """Calculate total expense of the trip"""
+            """Calculate total expense of the trip
+
+            Args:
+                *costs (float): The individual expenses
+
+            Returns:
+                float: The total expense
+            """
             try:
                 result = self.calculator.calculate_total(*costs)
                 logger.info("Total expense calculated: {}".format(result))
@@ -39,7 +55,14 @@ class CalculatorTool:
 
         @tool
         def calculate_daily_expense_budget(total_cost: float, days: int) -> float:
-            """Calculate daily expense"""
+            """Calculate daily expense
+            Args:
+                total_cost (float): The total cost of the trip
+                days (int): The number of days
+
+            Returns:
+                float: The daily expense budget
+            """
             try:
                 result = self.calculator.calculate_dailybudget(total_cost, days)
                 logger.info("Daily expense budget calculated: {}".format(result))
