@@ -26,6 +26,7 @@ class WeatherInfoTool:
                     temp = weather_data.get('main', {}).get('temp', 'N/A')
                     desc = weather_data.get('weather', [{}])[0].get('description', 'N/A')
                     logger.info(f"Current weather in {city}: {temp}°C, {desc}")
+                    print(f"Current weather in {city}: {temp}°C, {desc}")
                     return f"Current weather in {city}: {temp}°C, {desc}"
                 return f"Could not fetch weather for {city}"
             except Exception as e:
@@ -67,7 +68,7 @@ class WeatherInfoTool:
                             f"{desc}\n"
                         )
                         
-
+                print(f"Weather forecast for {location} for the next {days} days: {forecast_str}")
                 logger.info(f"Weather forecast for {location} for the next {days} days: {forecast_str}")
                 return forecast_str
             except Exception as e:

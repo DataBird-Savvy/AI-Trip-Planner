@@ -20,6 +20,7 @@ class CalculatorTool:
             try:
                 result = self.calculator.multiply(price_per_night, total_days)
                 logger.info("Total hotel cost calculated: {}".format(result))
+                print(f"Total hotel cost calculated: {result}")
                 return result
             except Exception as e:
                 raise AITripPlannerException(error_message=e, error_detail=sys.exc_info())
@@ -30,6 +31,7 @@ class CalculatorTool:
             try:
                 result = self.calculator.calculate_total(*costs)
                 logger.info("Total expense calculated: {}".format(result))
+                print(f"Total expense calculated: {result}")
                 return result
             
             except Exception as e:
@@ -41,6 +43,7 @@ class CalculatorTool:
             try:
                 result = self.calculator.calculate_daily_budget(total_cost, days)
                 logger.info("Daily expense budget calculated: {}".format(result))
+                print(f"Daily expense budget calculated: {result}")
                 return result
             except Exception as e:
                 raise AITripPlannerException(error_message=e, error_detail=sys.exc_info())

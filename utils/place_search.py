@@ -91,31 +91,31 @@ class OpenStreetMapPlaceSearch:
             elements = response.json().get("elements", [])
 
             places = []
+            seen_names = set()
 
             for item in elements:
                 tags = item.get("tags", {})
-
+                names = tags.get("name")
                 # Ignore places without names.
                 if not tags.get("name"):
                     continue
 
-                center = item.get("center", {})
+                if not names or tags.get("name") not in seen_names:
+                    continue
+
+                seen_names.add(tags.get("name"))
 
                 places.append({
                     "name": tags.get("name"),
                     "address": tags.get("addr:full")
                             or tags.get("addr:street"),
-                    "latitude": item.get("lat", center.get("lat")),
-                    "longitude": item.get("lon", center.get("lon")),
-                    "category": tags.get("tourism")
-                                or tags.get("amenity")
-                                or tags.get("leisure")
-                                or tags.get("public_transport"),
+                   
                     "website": tags.get("website"),
                     "phone": tags.get("phone"),
-                    "osm_type": item.get("type"),
-                    "osm_id": item.get("id")
+                  
                 })
+                if len(places) >= 5:
+                    break
 
             return {
                 "location": place,

@@ -23,10 +23,11 @@ class CurrencyConverterTool:
             try:
                 result= self.currency_service.convert_currency(amount, from_currency, to_currency)
                 logger.info("Currency conversion result: {} {} to {} = {}".format(amount, from_currency, to_currency, result))
+                print(f"Currency conversion result: {amount} {from_currency} to {to_currency} = {result}")
                 return result
             except Exception as e:
               logger.error(f"Error in currency conversion tool: {e}")
-              
+              print(f"Error in currency conversion tool: {e}")
              
 
         logger.info("Converter tool setup complete with tools: convert_currency")
