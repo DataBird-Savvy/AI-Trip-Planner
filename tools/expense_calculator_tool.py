@@ -26,7 +26,7 @@ class CalculatorTool:
                 raise AITripPlannerException(error_message=e, error_detail=sys.exc_info())
 
         @tool
-        def calculate_total_expense(costs: float) -> float:
+        def calculate_total_expense(*costs: float) -> float:
             """Calculate total expense of the trip"""
             try:
                 result = self.calculator.calculate_total(*costs)
@@ -41,7 +41,7 @@ class CalculatorTool:
         def calculate_daily_expense_budget(total_cost: float, days: int) -> float:
             """Calculate daily expense"""
             try:
-                result = self.calculator.calculate_daily_budget(total_cost, days)
+                result = self.calculator.calculate_dailybudget(total_cost, days)
                 logger.info("Daily expense budget calculated: {}".format(result))
                 print(f"Daily expense budget calculated: {result}")
                 return result

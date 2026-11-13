@@ -32,6 +32,7 @@ class Graphbuilder:
                            *self.place_search_tool.place_search_tool_list])   
 
         self.system_prompt = SYSTEM_PROMPT
+        logger.info("tools loaded successfully: {}".format([tool.name for tool in self.tools]))
         self.llm_tools = self.llm.bind_tools(self.tools)
 
 

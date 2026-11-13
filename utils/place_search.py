@@ -100,10 +100,10 @@ class OpenStreetMapPlaceSearch:
                 if not tags.get("name"):
                     continue
 
-                if not names or tags.get("name") not in seen_names:
+                if not names or tags.get("name") in seen_names:
                     continue
 
-                seen_names.add(tags.get("name"))
+                seen_names.add(names.casefold())
 
                 places.append({
                     "name": tags.get("name"),
@@ -210,9 +210,27 @@ class TavilyPlaceSearch:
         self.tavily_search_tool = TavilySearch(max_results=3)
 
     def _search(self, query: str) -> dict:
-        return self.tavily_search_tool.invoke({
+        """Search places using Tavily API."""
+        response = self.tavily_search_tool.invoke({
             "query": query
+      
         })
+
+        compact_results = []
+
+        for item in response.get("results", [])[:3]:
+
+            compact_results.append({
+                "title": item.get("title"),
+                "content": item.get("content", "")[:400],
+                "url": item.get("url")
+            })
+
+        return {
+            "query": query,
+            "results": compact_results
+        }
+  
 
     def tavily_search_attractions(self, place: str) -> dict:
         try:
