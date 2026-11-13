@@ -1,51 +1,28 @@
 
-import os
-import requests
-from dotenv import load_dotenv
-
-load_dotenv()
 
 import os
+import sys
 import requests
+from exception import AITripPlannerException
+
+import requests
+
+from logger import logger
 
 class CurrencyConverter:
-
     def __init__(self, api_key: str):
-        self.api_key = api_key
-        self.base_url = "https://api.exchangerate.host/convert"
-
-    def convert_currency(
-        self,
-        amount: float,
-        from_currency: str,
-        to_currency: str
-    ) -> float:
-
-        params = {
-            "access_key": self.api_key,
-            "from": from_currency,
-            "to": to_currency,
-            "amount": amount
-        }
-
-        response = requests.get(self.base_url, params=params)
-        response.raise_for_status()
-
-        data = response.json()
-
-        if data.get("success"):
-            result = data["result"]
-
-            print(
-                f"{amount} {from_currency} = "
-                f"{result:.2f} {to_currency}"
-            )
-
-            print(f"Rate used: {data['info']['quote']}")
-
-            
-            return result
-        else:
-            print(f"Error: {data.get('error', {}).get('info', 'Conversion failed')}")
-
-        
+        self.base_url = f"https://v6.exchangerate-api.com/v6/{api_key}/latest/"
+    
+    def convert_currency(self, amount:float, from_currency:str, to_currency:str):
+        """Convert the amount from one currency to another"""
+        try:
+            url = f"{self.base_url}/{from_currency}"
+            response = requests.get(url)
+            if response.status_code != 200:
+                raise Exception("API call failed:", response.json())
+            rates = response.json()["conversion_rates"]
+            if to_currency not in rates:
+                raise ValueError(f"{to_currency} not found in exchange rates.")
+            return amount * rates[to_currency]
+        except Exception as e:
+            logger.error(f"Error in currency conversion: {e}")

@@ -3,6 +3,7 @@ import datetime
 
 def save_document(response_text: str, directory: str = "./output"):
     """Export travel plan to Markdown file with proper formatting"""
+
     os.makedirs(directory, exist_ok=True)
     
     
@@ -36,5 +37,6 @@ def save_document(response_text: str, directory: str = "./output"):
         return filename
         
     except Exception as e:
-        print(f"Error saving markdown file: {e}")
-        return None
+        raise Exception(f"Error saving markdown file: {e}")
+      
+       

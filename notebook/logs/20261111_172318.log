@@ -1,0 +1,7 @@
+[2026-11-12 12:38:35,445] 	INFO 	1025 	_client.py 	_send_single_request() 	HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+[2026-11-12 12:38:37,764] 	INFO 	1025 	_client.py 	_send_single_request() 	HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+[2026-11-12 12:38:38,336] 	INFO 	1025 	_client.py 	_send_single_request() 	HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+[2026-11-12 12:38:38,835] 	INFO 	1025 	_client.py 	_send_single_request() 	HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+[2026-11-12 12:38:39,443] 	INFO 	1025 	_client.py 	_send_single_request() 	HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+[2026-11-12 12:38:42,078] 	INFO 	1025 	_client.py 	_send_single_request() 	HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+[2026-11-12 12:38:44,697] 	INFO 	1025 	_client.py 	_send_single_request() 	HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
